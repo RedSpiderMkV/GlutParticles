@@ -1,17 +1,22 @@
 #include <math.h>
 #include <GL/glut.h>
+#include <iostream>
 
 #include "SceneBuilder.h"
 #include "../Particle/Particle.h"
+#include "../Particle/Position.h"
+
+using namespace std;
 
 namespace SceneGenerator
 {
-    void SceneBuilder::DrawRedParticle(float posX, float posY, float posZ, Particle *particle)
+    void SceneBuilder::DrawRedParticle(Particle particle)
     {
         glColor3f(1.0, 0.0, 0.0);
         glPushMatrix();
-            glTranslated(posX, posY, posZ);
-            glutSolidSphere(particle->GetSize(), particle->GetVerticalSlices(), particle->GetHorizontalSlices());
+			Position position = particle.GetPosition();
+            glTranslated(position.GetPositionX(), position.GetPositionY(), position.GetPositionZ());
+            glutSolidSphere(particle.GetSize(), particle.GetVerticalSlices(), particle.GetHorizontalSlices());
         glPopMatrix();
     }
     
@@ -36,14 +41,14 @@ namespace SceneGenerator
         glPopMatrix();
     }
     
-    void SceneBuilder::BuildScene(Particle* particle)
+    void SceneBuilder::BuildScene(Particle& particle)
     {
-        static float posY = 0;
-        
-        this->DrawRedParticle(0.6, posY, -5, particle);
-        this->DrawRedParticle(-0.6, posY * -1.0, -5, particle);
+        this->DrawRedParticle(particle);
         this->DrawBounds();
         
-        posY += 0.01;
+        Position position = particle.GetPosition();
+        position.SetPositionY(position.GetPositionY() - 0.01);
+        particle.SetPosition(position);
+        //cout << "X: " << particle.GetPositionX() << " Y: " << particle.GetPositionY() << endl;
     }
 }

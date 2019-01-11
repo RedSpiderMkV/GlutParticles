@@ -1,19 +1,20 @@
 #include <cstdlib>
 #include <math.h>
 #include <GL/glut.h>
+#include <vector>
 
 #include "GlutInit/GlutInit.h"
 #include "SceneBuilder/SceneBuilder.h"
 #include "Particle/Particle.h"
+#include "Particle/Position.h"
 
 using namespace GlutInitialisation;
 using namespace SceneGenerator;
 
-//GlutInit *initialiser = new GlutInit(800, 600);
-//SceneBuilder *sceneBuilder = new SceneBuilder();
 GlutInit initialiser(800, 600);
 SceneBuilder sceneBuilder;
-Particle* p1 = new Particle(0.025, 30, 30);
+Position p1Position(0.6, 0, -5);
+Particle p1(0.025, 30, 30, p1Position);
 
 void changeSize(int w, int h)
 {
