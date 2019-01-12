@@ -6,15 +6,27 @@
 #include "GlutInit/GlutInit.h"
 #include "SceneBuilder/SceneBuilder.h"
 #include "Particle/Particle.h"
-#include "Particle/Position.h"
+#include "Particle/ThreeComponentVector.h"
 
 using namespace GlutInitialisation;
 using namespace SceneGenerator;
 
 GlutInit initialiser(800, 600);
 SceneBuilder sceneBuilder;
-Position p1Position(0.6, 0, -5);
-Particle p1(0.025, 30, 30, p1Position);
+
+vector<Particle> _particleCollection(10);
+
+void InitialiseParticles()
+{
+	for(uint i = 0; i < _particleCollection.size(); i++)
+	{
+		ThreeComponentVector position(1.0, (float)i / 10.0, -5);
+		ThreeComponentVector velocity(-0.01, -0.01, 0);
+		
+		Particle newParticle(position, velocity);
+		_particleCollection[i] = newParticle;
+	}
+}
 
 void changeSize(int w, int h)
 {
@@ -29,7 +41,7 @@ void renderScene(void)
 	// Reset transformations
 	glLoadIdentity();
 
-    sceneBuilder.BuildScene(p1);
+    sceneBuilder.BuildScene(_particleCollection);
 	glutSwapBuffers();
 }
 
@@ -40,6 +52,8 @@ void pressKey(int key, int xx, int yy)
 
 int main(int argc, char **argv)
 {
+	InitialiseParticles();
+	
 	// init GLUT and create window
 	glutInit(&argc, argv);
 	glutCreateWindow("Particles");

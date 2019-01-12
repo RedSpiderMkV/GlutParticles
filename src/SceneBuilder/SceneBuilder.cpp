@@ -1,10 +1,11 @@
 #include <math.h>
 #include <GL/glut.h>
 #include <iostream>
+#include <vector>
 
 #include "SceneBuilder.h"
 #include "../Particle/Particle.h"
-#include "../Particle/Position.h"
+#include "../Particle/ThreeComponentVector.h"
 
 using namespace std;
 
@@ -14,9 +15,13 @@ namespace SceneGenerator
     {
         glColor3f(1.0, 0.0, 0.0);
         glPushMatrix();
-			Position position = particle.GetPosition();
-            glTranslated(position.GetPositionX(), position.GetPositionY(), position.GetPositionZ());
-            glutSolidSphere(particle.GetSize(), particle.GetVerticalSlices(), particle.GetHorizontalSlices());
+			ThreeComponentVector position = particle.GetPosition();
+			
+			float xPosition = position.GetX() * 2.7;
+			float yPosition = position.GetY() * 2.0;
+			
+            glTranslated(xPosition, yPosition, position.GetZ());
+            glutSolidSphere(this->SIZE, this->VERTICAL_SLICES, this->HORIZONTAL_SLICES);
         glPopMatrix();
     }
     
@@ -41,14 +46,35 @@ namespace SceneGenerator
         glPopMatrix();
     }
     
-    void SceneBuilder::BuildScene(Particle& particle)
+    void SceneBuilder::BuildScene(vector<Particle>& particleCollection)
     {
-        this->DrawRedParticle(particle);
-        this->DrawBounds();
+		for(uint i = 0; i < particleCollection.size(); i++)
+		{
+			Particle& particle = particleCollection.at(i);
+			this->DrawRedParticle(particle);
+			
+			ThreeComponentVector& position = particle.GetPosition();
+			ThreeComponentVector& velocity = particle.GetVelocity();
+			
+			position.Add(velocity);
+			
+			if(position.GetX() < -1.0 || position.GetX() > 1.0)
+			{
+				ThreeComponentVector newVelocity(velocity.GetX() * -1.0, velocity.GetY(), velocity.GetZ());
+				particle.SetVelocity(newVelocity);
+				position.Add(velocity);
+			}
+			
+			if(position.GetY() < -1.0 || position.GetY() > 1.0)
+			{
+				ThreeComponentVector newVelocity(velocity.GetX(), velocity.GetY() * -1.0, velocity.GetZ());
+				particle.SetVelocity(newVelocity);
+				position.Add(velocity);
+			}
+			
+			//particle.SetPosition(position);
+		}
         
-        Position position = particle.GetPosition();
-        position.SetPositionY(position.GetPositionY() - 0.01);
-        particle.SetPosition(position);
-        //cout << "X: " << particle.GetPositionX() << " Y: " << particle.GetPositionY() << endl;
+        this->DrawBounds();
     }
 }

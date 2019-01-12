@@ -1,10 +1,10 @@
 CC=g++
 OUTDIR=out
 
-all: MakePosition MakeParticle
+all: MakeThreeComponentVector MakeParticle
 
-MakePosition:
-	$(CC) -Wall -c Position.cpp -o Position.o
+MakeThreeComponentVector:
+	$(CC) -Wall -c ThreeComponentVector.cpp -o ThreeComponentVector.o
 
 MakeParticle:
 	$(CC) -Wall -c Particle.cpp -o Particle.o

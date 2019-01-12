@@ -1,39 +1,37 @@
 
 #include "Particle.h"
-#include "Position.h"
+#include "ThreeComponentVector.h"
 
 namespace Particles
 {
-    Particle::Particle(float size, int vSlices, int hSlices, Position position)
+	Particle::Particle()
+	{
+		
+	}
+	
+    Particle::Particle(ThreeComponentVector position, ThreeComponentVector velocity)
     {
-        this->_size = size;
-        this->_horizontalSlices = hSlices;
-        this->_verticalSlices = vSlices;
+		this->_velocity = velocity;
         this->_position = position;
     }
     
-    float Particle::GetSize()
-    {
-        return this->_size;
-    }
-    
-    int Particle::GetVerticalSlices()
-    {
-        return this->_verticalSlices;
-    }
-    
-    int Particle::GetHorizontalSlices()
-    {
-        return this->_horizontalSlices;
-    }
-    
-    Position Particle::GetPosition()
+    ThreeComponentVector& Particle::GetPosition()
     {
 		return _position;
 	}
     
-    void Particle::SetPosition(Position position)
+    void Particle::SetPosition(ThreeComponentVector position)
     {
 		this->_position = position;
+	}
+	
+	ThreeComponentVector& Particle::GetVelocity()
+	{
+		return this->_velocity;
+	}
+	
+	void Particle::SetVelocity(ThreeComponentVector velocity)
+	{
+		this->_velocity = velocity;
 	}
 }
