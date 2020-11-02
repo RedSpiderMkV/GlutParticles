@@ -20,7 +20,7 @@ void InitialiseParticles()
 {
 	for(uint i = 0; i < _particleCollection.size(); i++)
 	{
-		ThreeComponentVector position(1.0, (float)i / 10.0, -5);
+		ThreeComponentVector position(1.0, (float)i / (float)_particleCollection.size(), -5);
 		ThreeComponentVector velocity(-0.01, -0.01, 0);
 		
 		Particle newParticle(position, velocity);
