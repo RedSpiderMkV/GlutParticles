@@ -1,6 +1,9 @@
-
+#include <iostream>
 #include "Particle.h"
 #include "ThreeComponentVector.h"
+
+using std::cout;
+using std::endl;
 
 namespace Particles
 {
@@ -33,5 +36,10 @@ namespace Particles
 	void Particle::SetVelocity(ThreeComponentVector velocity)
 	{
 		this->_velocity = velocity;
+	}
+	
+	void Particle::Update(int deltaTime)
+	{
+		cout << "Update called: " << deltaTime << endl;
 	}
 }

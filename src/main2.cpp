@@ -7,12 +7,15 @@
 #include "SceneBuilder/SceneBuilder.h"
 #include "Particle/Particle.h"
 #include "Particle/ThreeComponentVector.h"
+#include "DeltaTime/DeltaTimeManager.h"
 
 using namespace GlutInitialisation;
 using namespace SceneGenerator;
+using namespace DeltaTime;
 
 GlutInit initialiser(800, 600);
-SceneBuilder sceneBuilder;
+DeltaTimeManager deltaTimeManager;
+SceneBuilder sceneBuilder(deltaTimeManager);
 
 vector<Particle> _particleCollection(10);
 

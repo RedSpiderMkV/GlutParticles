@@ -6,11 +6,18 @@
 #include "SceneBuilder.h"
 #include "../Particle/Particle.h"
 #include "../Particle/ThreeComponentVector.h"
+#include "../DeltaTime/DeltaTimeManager.h"
 
 using namespace std;
+using namespace DeltaTime;
 
 namespace SceneGenerator
 {
+	SceneBuilder::SceneBuilder(DeltaTimeManager& deltaTimeManager)
+	{
+		this->_deltaTimeManager = deltaTimeManager;
+	}
+	
     void SceneBuilder::DrawRedParticle(Particle particle)
     {
         glColor3f(1.0, 0.0, 0.0);
@@ -51,28 +58,12 @@ namespace SceneGenerator
 		for(uint i = 0; i < particleCollection.size(); i++)
 		{
 			Particle& particle = particleCollection.at(i);
+			
+			int deltaTime = this->_deltaTimeManager.GetDeltaTimeSinceLastCall();
+			particle.Update(deltaTime);
 			this->DrawRedParticle(particle);
 			
-			ThreeComponentVector& position = particle.GetPosition();
-			ThreeComponentVector& velocity = particle.GetVelocity();
-			
-			position.Add(velocity);
-			
-			if(position.GetX() < -1.0 || position.GetX() > 1.0)
-			{
-				ThreeComponentVector newVelocity(velocity.GetX() * -1.0, velocity.GetY(), velocity.GetZ());
-				particle.SetVelocity(newVelocity);
-				position.Add(velocity);
-			}
-			
-			if(position.GetY() < -1.0 || position.GetY() > 1.0)
-			{
-				ThreeComponentVector newVelocity(velocity.GetX(), velocity.GetY() * -1.0, velocity.GetZ());
-				particle.SetVelocity(newVelocity);
-				position.Add(velocity);
-			}
-			
-			//particle.SetPosition(position);
+			break;
 		}
         
         this->DrawBounds();

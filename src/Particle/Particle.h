@@ -20,6 +20,8 @@ namespace Particles
 
 			ThreeComponentVector& GetVelocity();
 			void SetVelocity(ThreeComponentVector velocity);
+			
+			void Update(int deltaTime);
     };
 }
 

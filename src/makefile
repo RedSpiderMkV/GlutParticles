@@ -2,10 +2,14 @@ GLUT=-lGL -lGLU -lglut
 OUTDIR=out
 STD=-std=c++11
 
-all: CreateDir MakeInit MakeParticle MakeSceneBuilder MakeMain
+all: CreateDir MakeInit MakeParticle MakeDeltaTimeManager MakeSceneBuilder MakeMain
 
 MakeMain:
 	g++ -Wall $(STD) main2.cpp $(OUTDIR)/*.o $(GLUT) -o $(OUTDIR)/ParticlesTest.exe
+
+MakeDeltaTimeManager:
+	make -C DeltaTime
+	mv DeltaTime/*.o $(OUTDIR)
 
 MakeParticle:
 	make -C Particle
