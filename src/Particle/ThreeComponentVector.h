@@ -15,6 +15,9 @@ namespace Particles
             ThreeComponentVector(float vectorX, float vectorY, float vectorZ);
 
             void Add(ThreeComponentVector additionalVector);
+            
+            void SetX(float xValue);
+            void SetY(float yValue);
 
             float GetX();
             float GetY();

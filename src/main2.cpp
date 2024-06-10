@@ -17,14 +17,14 @@ GlutInit initialiser(800, 600);
 DeltaTimeManager deltaTimeManager;
 SceneBuilder sceneBuilder(deltaTimeManager);
 
-vector<Particle> _particleCollection(10);
+vector<Particle> _particleCollection(1);
 
 void InitialiseParticles()
 {
 	for(uint i = 0; i < _particleCollection.size(); i++)
 	{
 		ThreeComponentVector position(1.0, (float)i / (float)_particleCollection.size(), -5);
-		ThreeComponentVector velocity(-0.01, -0.01, 0);
+		ThreeComponentVector velocity(-0.0002, -0.0002, 0);
 		
 		Particle newParticle(position, velocity);
 		_particleCollection[i] = newParticle;

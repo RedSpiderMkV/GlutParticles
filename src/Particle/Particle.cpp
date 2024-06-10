@@ -9,7 +9,7 @@ namespace Particles
 {
 	Particle::Particle()
 	{
-		
+
 	}
 	
     Particle::Particle(ThreeComponentVector position, ThreeComponentVector velocity)
@@ -40,6 +40,32 @@ namespace Particles
 	
 	void Particle::Update(int deltaTime)
 	{
-		cout << "Update called: " << deltaTime << endl;
+		float timeFactoredXMovement = this->_velocity.GetX() * deltaTime;
+		float timeFactoredYMovement = this->_velocity.GetY() * deltaTime;
+		float timeFactoredZMovement = this->_velocity.GetZ() * deltaTime;
+
+		if(timeFactoredYMovement + this->_position.GetY() < -1.0f)
+		{
+			this->_position.SetY(1.0f);
+		}
+
+		if(timeFactoredYMovement + this->_position.GetY() > 1.0f)
+		{
+			this->_position.SetY(-1.0f);
+		}
+
+		if(timeFactoredXMovement + this->_position.GetX() < -1.0f)
+		{
+			this->_position.SetX(1.0f);
+		}
+
+		if(timeFactoredXMovement + this->_position.GetX() > 1.0f)
+		{
+			this->_position.SetX(-1.0f);
+		}
+
+		cout << "Current X, Y position " << this->_position.GetX() << " " << this->_position.GetY() << endl;
+
+		this->_position.Add(ThreeComponentVector(timeFactoredXMovement, timeFactoredYMovement, timeFactoredZMovement));
 	}
 }

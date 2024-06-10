@@ -1,4 +1,3 @@
-
 #include "ThreeComponentVector.h"
 
 namespace Particles
@@ -38,4 +37,14 @@ namespace Particles
     {
 		return this->_vectorZ;
 	}
+
+    void ThreeComponentVector::SetX(float xValue)
+    {
+        this->_vectorX = xValue;
+    }
+
+    void ThreeComponentVector::SetY(float yValue)
+    {
+        this->_vectorY = yValue;
+    }
 }
