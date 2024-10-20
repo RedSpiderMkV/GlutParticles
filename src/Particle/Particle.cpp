@@ -64,7 +64,7 @@ namespace Particles
 			this->_position.SetX(-1.0f);
 		}
 
-		cout << "Current X, Y position " << this->_position.GetX() << " " << this->_position.GetY() << endl;
+		//cout << "Current X, Y position " << this->_position.GetX() << " " << this->_position.GetY() << endl;
 
 		this->_position.Add(ThreeComponentVector(timeFactoredXMovement, timeFactoredYMovement, timeFactoredZMovement));
 	}
