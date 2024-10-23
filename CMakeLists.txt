@@ -17,7 +17,7 @@ add_executable(glut_particles
     src/SceneBuilder/SceneBuilder.cpp
 )
 
-# Link the libraries to your executable
+# Link the GL libraries to your executable
 target_link_libraries(glut_particles 
     PRIVATE 
     GL
