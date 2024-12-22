@@ -9,12 +9,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add the executable with all source files
 add_executable(glut_particles 
-    src/main2.cpp 
+    src/main.cpp 
     src/DeltaTime/DeltaTimeManager.cpp 
     src/GlutInit/GlutInit.cpp
     src/Particle/Particle.cpp
     src/Particle/ThreeComponentVector.cpp
-    src/SceneBuilder/SceneBuilder.cpp
+    src/SceneBuilder/ParticleSceneBuilder.cpp
 )
 
 # Link the GL libraries to your executable

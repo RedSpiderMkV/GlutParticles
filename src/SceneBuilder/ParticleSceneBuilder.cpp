@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "SceneBuilder.h"
+#include "ParticleSceneBuilder.h"
 #include "../Particle/Particle.h"
 #include "../Particle/ThreeComponentVector.h"
 #include "../DeltaTime/DeltaTimeManager.h"
