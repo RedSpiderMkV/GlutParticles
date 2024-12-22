@@ -13,12 +13,12 @@ using namespace DeltaTime;
 
 namespace SceneGenerator
 {
-	SceneBuilder::SceneBuilder(DeltaTimeManager& deltaTimeManager)
+	ParticleSceneBuilder::ParticleSceneBuilder(DeltaTimeManager& deltaTimeManager)
 	{
 		this->_deltaTimeManager = deltaTimeManager;
 	}
 	
-    void SceneBuilder::DrawRedParticle(Particle particle)
+    void ParticleSceneBuilder::DrawRedParticle(Particle particle)
     {
         glColor3f(1.0, 0.0, 0.0);
         glPushMatrix();
@@ -32,7 +32,7 @@ namespace SceneGenerator
         glPopMatrix();
     }
     
-    void SceneBuilder::DrawBounds()
+    void ParticleSceneBuilder::DrawBounds()
     {
         glColor3f(0.0, 0.0, 0.0);
         glPushMatrix();
@@ -53,7 +53,7 @@ namespace SceneGenerator
         glPopMatrix();
     }
     
-    void SceneBuilder::BuildScene(vector<Particle>& particleCollection)
+    void ParticleSceneBuilder::BuildScene(vector<Particle>& particleCollection)
     {
 		for(uint i = 0; i < particleCollection.size(); i++)
 		{

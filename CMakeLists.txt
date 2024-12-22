@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Set the project name and C++ standard
-project(glut_particles)
+project(glut_demo)
 
 # Use C++11 standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add the executable with all source files
-add_executable(glut_particles 
-    src/main.cpp 
+add_executable(glut_demo 
+    src/GridMain.cpp 
     src/DeltaTime/DeltaTimeManager.cpp 
     src/GlutInit/GlutInit.cpp
     src/Particle/Particle.cpp
@@ -18,7 +18,7 @@ add_executable(glut_particles
 )
 
 # Link the GL libraries to your executable
-target_link_libraries(glut_particles 
+target_link_libraries(glut_demo 
     PRIVATE 
     GL
     GLU

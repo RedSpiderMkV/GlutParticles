@@ -12,7 +12,7 @@ using namespace std;
 
 namespace SceneGenerator
 {
-    class SceneBuilder
+    class ParticleSceneBuilder
     {
         private:
 			const float SIZE = 0.025;
@@ -23,7 +23,7 @@ namespace SceneGenerator
             void DrawRedParticle(Particle particle);
             void DrawBounds();
         public:
-			SceneBuilder(DeltaTimeManager& deltaTimeManager);
+			ParticleSceneBuilder(DeltaTimeManager& deltaTimeManager);
             void BuildScene(vector<Particle>& particleCollection);
     };
 }
