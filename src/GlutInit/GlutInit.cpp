@@ -4,8 +4,9 @@
 
 namespace GlutInitialisation
 {
-    GlutInit::GlutInit(int width, int height)
+    GlutInit::GlutInit(int width, int height, bool use3D)
     {
+        this->_use3d = use3D;
         glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
         glutInitWindowPosition(100, 100);
         glutInitWindowSize(width, height);
@@ -32,7 +33,14 @@ namespace GlutInitialisation
         glViewport(0, 0, w, h);
 
         // Set the correct perspective.
-        gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+        if (this->_use3d)
+        {
+            gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+        }
+        else
+        {
+            gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
+        }
 
         // Get Back to the Modelview
         glMatrixMode(GL_MODELVIEW);

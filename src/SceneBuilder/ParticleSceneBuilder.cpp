@@ -34,7 +34,7 @@ namespace SceneGenerator
     
     void ParticleSceneBuilder::DrawBounds()
     {
-        glColor3f(0.0, 0.0, 0.0);
+        glColor3f(1.0, 1.0, 1.0);
         glPushMatrix();
             glBegin(GL_LINES); //Begin quadrilateral coordinates
             //Trapezoid

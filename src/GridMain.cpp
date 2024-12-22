@@ -7,12 +7,18 @@
 #include "Particle/Particle.h"
 #include "Particle/ThreeComponentVector.h"
 #include "DeltaTime/DeltaTimeManager.h"
+#include "SceneBuilder/GridSceneBuilder.h"
 
 using namespace GlutInitialisation;
 using namespace DeltaTime;
+using namespace SceneGenerator;
 
-GlutInit initialiser(800, 600);
+const int SCENE_WIDTH = 800;
+const int SCENE_HEIGHT = 600;
+
+GlutInit initialiser(SCENE_WIDTH, SCENE_HEIGHT, false);
 DeltaTimeManager deltaTimeManager;
+GridSceneBuilder gridSceneBuilder(deltaTimeManager, SCENE_HEIGHT, SCENE_WIDTH);
 
 void InitialiseGrid()
 {
@@ -33,6 +39,7 @@ void renderScene(void)
 	glLoadIdentity();
 
     // Scene generation goes here
+    gridSceneBuilder.BuildScene();
 
 	glutSwapBuffers();
 }
