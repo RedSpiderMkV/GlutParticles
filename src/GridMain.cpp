@@ -4,8 +4,8 @@
 #include <vector>
 
 #include "GlutInit/GlutInit.h"
-#include "Particle/Particle.h"
-#include "Particle/ThreeComponentVector.h"
+#include "SceneComponent/Particle.h"
+#include "SceneComponent/ThreeComponentVector.h"
 #include "DeltaTime/DeltaTimeManager.h"
 #include "SceneBuilder/GridSceneBuilder.h"
 

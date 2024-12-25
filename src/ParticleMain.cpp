@@ -5,17 +5,20 @@
 
 #include "GlutInit/GlutInit.h"
 #include "SceneBuilder/ParticleSceneBuilder.h"
-#include "Particle/Particle.h"
-#include "Particle/ThreeComponentVector.h"
+#include "SceneComponent/Particle.h"
+#include "SceneComponent/ThreeComponentVector.h"
 #include "DeltaTime/DeltaTimeManager.h"
 
 using namespace GlutInitialisation;
 using namespace SceneGenerator;
 using namespace DeltaTime;
 
-GlutInit initialiser(800, 600);
+const int SCENE_WIDTH = 800;
+const int SCENE_HEIGHT = 600;
+
+GlutInit initialiser(SCENE_WIDTH, SCENE_HEIGHT, false);
 DeltaTimeManager deltaTimeManager;
-ParticleSceneBuilder sceneBuilder(deltaTimeManager);
+ParticleSceneBuilder sceneBuilder(deltaTimeManager, SCENE_HEIGHT, SCENE_WIDTH);
 
 vector<Particle> _particleCollection(1);
 
@@ -45,6 +48,7 @@ void renderScene(void)
 	glLoadIdentity();
 
     sceneBuilder.BuildScene(_particleCollection);
+	sceneBuilder.DrawBounds();
 	glutSwapBuffers();
 }
 
