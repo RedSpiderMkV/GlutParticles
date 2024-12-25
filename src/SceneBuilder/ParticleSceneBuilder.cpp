@@ -80,12 +80,12 @@ namespace SceneGenerator
             float xPosition = particlePosition.GetX();
 			float yPosition = particlePosition.GetY();
 
-            if(yPosition > this->_topBoundary || yPosition < this->_bottomBoundary)
+            if(yPosition >= this->_topBoundary || yPosition <= this->_bottomBoundary)
             {
                 particle.InvertVerticalVelocity();
             }
 
-            if (xPosition < this->_leftBoundary || xPosition > this->_rightBoundary)
+            if (xPosition <= this->_leftBoundary || xPosition >= this->_rightBoundary)
             {
                 particle.InvertHorizontalVelocity();
             }
