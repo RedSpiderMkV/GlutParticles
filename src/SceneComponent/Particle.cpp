@@ -44,28 +44,20 @@ namespace SceneComponent
 		float timeFactoredYMovement = this->_velocity.GetY() * deltaTime;
 		float timeFactoredZMovement = this->_velocity.GetZ() * deltaTime;
 
-		if(timeFactoredYMovement + this->_position.GetY() < -1.0f)
-		{
-			this->_position.SetY(1.0f);
-		}
-
-		if(timeFactoredYMovement + this->_position.GetY() > 1.0f)
-		{
-			this->_position.SetY(-1.0f);
-		}
-
-		if(timeFactoredXMovement + this->_position.GetX() < -1.0f)
-		{
-			this->_position.SetX(1.0f);
-		}
-
-		if(timeFactoredXMovement + this->_position.GetX() > 1.0f)
-		{
-			this->_position.SetX(-1.0f);
-		}
-
 		//cout << "Current X, Y position " << this->_position.GetX() << " " << this->_position.GetY() << endl;
 
 		this->_position.Add(ThreeComponentVector(timeFactoredXMovement, timeFactoredYMovement, timeFactoredZMovement));
+	}
+
+	void Particle::InvertVerticalVelocity()
+	{
+		float currentVerticalVelocity = this->_velocity.GetY();
+		this->_velocity.SetY(currentVerticalVelocity * -1);
+	}
+
+	void Particle::InvertHorizontalVelocity()
+	{
+		float currentHorizontalVelocity = this->_velocity.GetX();
+		this->_velocity.SetX(currentHorizontalVelocity * -1);
 	}
 }

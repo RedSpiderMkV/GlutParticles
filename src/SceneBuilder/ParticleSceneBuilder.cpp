@@ -21,6 +21,11 @@ namespace SceneGenerator
         this->_sceneHeight = sceneHeight;
         this->_sceneWidth = sceneWidth;
         this->_scaleFactor = static_cast<float>(this->_sceneWidth) / static_cast<float>(this->_sceneHeight);
+
+        _leftBoundary = -1.0f + (10.0f / this->_sceneWidth);
+        _rightBoundary = 1.0f - (10.0f / this->_sceneWidth);
+        _topBoundary = 1.0f - (10.0f / this->_sceneHeight);
+        _bottomBoundary = -1.0f + (10.0f / this->_sceneHeight);
 	}
 	
     void ParticleSceneBuilder::DrawRedParticle(Particle particle)
@@ -40,31 +45,25 @@ namespace SceneGenerator
     
     void ParticleSceneBuilder::DrawBounds()
     {
-        float left = -1.0f + (10.0f / this->_sceneWidth);
-        float right = 1.0f - (10.0f / this->_sceneWidth);
-
-        float top = 1.0f - (10.0f / this->_sceneHeight);
-        float bottom = -1.0f + (10.0f / this->_sceneHeight);
-
         glColor3f(1.0, 1.0, 1.0);
         glPushMatrix();
             glBegin(GL_LINES);
             
             // Top line
-            glVertex2f(left, top);
-            glVertex2f(right, top);
+            glVertex2f(this->_leftBoundary, this->_topBoundary);
+            glVertex2f(this->_rightBoundary, this->_topBoundary);
 
             // Bottom line
-            glVertex2f(left, bottom);
-            glVertex2f(right, bottom);
+            glVertex2f(this->_leftBoundary, this->_bottomBoundary);
+            glVertex2f(this->_rightBoundary, this->_bottomBoundary);
 
             // Right line
-            glVertex2f(right, top);
-            glVertex2f(right, bottom);
+            glVertex2f(this->_rightBoundary, this->_topBoundary);
+            glVertex2f(this->_rightBoundary, this->_bottomBoundary);
 
             // Left line
-            glVertex2f(left, top);
-            glVertex2f(left, bottom);
+            glVertex2f(this->_leftBoundary, this->_topBoundary);
+            glVertex2f(this->_leftBoundary, this->_bottomBoundary);
 
             glEnd();
         glPopMatrix();
@@ -77,6 +76,20 @@ namespace SceneGenerator
 			Particle& particle = particleCollection.at(i);
 			
 			int deltaTime = this->_deltaTimeManager.GetDeltaTimeSinceLastCall();
+            ThreeComponentVector particlePosition = particle.GetPosition();
+            float xPosition = particlePosition.GetX();
+			float yPosition = particlePosition.GetY();
+
+            if(yPosition > this->_topBoundary || yPosition < this->_bottomBoundary)
+            {
+                particle.InvertVerticalVelocity();
+            }
+
+            if (xPosition < this->_leftBoundary || xPosition > this->_rightBoundary)
+            {
+                particle.InvertHorizontalVelocity();
+            }
+
 			particle.Update(deltaTime);
 			this->DrawRedParticle(particle);
 			

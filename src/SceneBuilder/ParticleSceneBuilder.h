@@ -25,6 +25,8 @@ namespace SceneGenerator
             
             float _leftBoundary;
             float _rightBoundary;
+            float _topBoundary;
+            float _bottomBoundary;
 
 			DeltaTimeManager _deltaTimeManager;
             

@@ -20,6 +20,9 @@ namespace SceneComponent
 
 			ThreeComponentVector& GetVelocity();
 			void SetVelocity(ThreeComponentVector velocity);
+
+            void InvertVerticalVelocity();
+            void InvertHorizontalVelocity();
 			
 			void Update(int deltaTime);
     };
