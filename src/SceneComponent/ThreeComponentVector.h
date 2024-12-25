@@ -2,7 +2,7 @@
 #ifndef THREECOMPONENTVECTOR_H
 #define THREECOMPONENTVECTOR_H
 
-namespace Particles
+namespace SceneComponent
 {
     class ThreeComponentVector
     {

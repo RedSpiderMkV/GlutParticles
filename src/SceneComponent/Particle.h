@@ -4,7 +4,7 @@
 
 #include "ThreeComponentVector.h"
 
-namespace Particles
+namespace SceneComponent
 {
     class Particle
     {

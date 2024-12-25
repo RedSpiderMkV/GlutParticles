@@ -6,7 +6,7 @@
 #include "../DeltaTime/DeltaTimeManager.h"
 #include <vector>
 
-using namespace Particles;
+using SceneComponent::Particle;
 using namespace DeltaTime;
 using namespace std;
 

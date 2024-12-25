@@ -12,6 +12,8 @@
 using namespace GlutInitialisation;
 using namespace SceneGenerator;
 using namespace DeltaTime;
+using SceneComponent::Particle;
+using SceneComponent::ThreeComponentVector;
 
 const int SCENE_WIDTH = 800;
 const int SCENE_HEIGHT = 600;

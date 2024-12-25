@@ -10,6 +10,8 @@
 
 using namespace std;
 using namespace DeltaTime;
+using SceneComponent::Particle;
+using SceneComponent::ThreeComponentVector;
 
 namespace SceneGenerator
 {

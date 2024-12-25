@@ -5,7 +5,7 @@
 using std::cout;
 using std::endl;
 
-namespace Particles
+namespace SceneComponent
 {
 	Particle::Particle()
 	{

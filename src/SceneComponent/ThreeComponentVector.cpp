@@ -1,6 +1,6 @@
 #include "ThreeComponentVector.h"
 
-namespace Particles
+namespace SceneComponent
 {
 	ThreeComponentVector::ThreeComponentVector()
 	{
