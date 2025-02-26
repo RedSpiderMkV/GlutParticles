@@ -18,46 +18,46 @@ namespace SceneComponent
 		
     }
     
-    ThreeComponentVector& Particle::GetPosition()
+    ThreeComponentVector Particle::GetPosition() const
     {
 		return _position;
 	}
     
     void Particle::SetPosition(ThreeComponentVector position)
     {
-		this->_position = position;
+		_position = position;
 	}
 	
-	ThreeComponentVector& Particle::GetVelocity()
+	ThreeComponentVector Particle::GetVelocity() const
 	{
-		return this->_velocity;
+		return _velocity;
 	}
 	
 	void Particle::SetVelocity(ThreeComponentVector velocity)
 	{
-		this->_velocity = velocity;
+		_velocity = velocity;
 	}
 	
 	void Particle::Update(int deltaTime)
 	{
-		float timeFactoredXMovement = this->_velocity.GetX() * deltaTime;
-		float timeFactoredYMovement = this->_velocity.GetY() * deltaTime;
-		float timeFactoredZMovement = this->_velocity.GetZ() * deltaTime;
+		float timeFactoredXMovement = _velocity.GetX() * deltaTime;
+		float timeFactoredYMovement = _velocity.GetY() * deltaTime;
+		float timeFactoredZMovement = _velocity.GetZ() * deltaTime;
 
 		//cout << "Current X, Y position " << this->_position.GetX() << " " << this->_position.GetY() << endl;
 
-		this->_position.Add(ThreeComponentVector(timeFactoredXMovement, timeFactoredYMovement, timeFactoredZMovement));
+		_position.Add(ThreeComponentVector(timeFactoredXMovement, timeFactoredYMovement, timeFactoredZMovement));
 	}
 
 	void Particle::InvertVerticalVelocity()
 	{
-		float currentVerticalVelocity = this->_velocity.GetY();
-		this->_velocity.SetY(currentVerticalVelocity * -1);
+		float currentVerticalVelocity = _velocity.GetY();
+		_velocity.SetY(currentVerticalVelocity * -1);
 	}
 
 	void Particle::InvertHorizontalVelocity()
 	{
-		float currentHorizontalVelocity = this->_velocity.GetX();
-		this->_velocity.SetX(currentHorizontalVelocity * -1);
+		float currentHorizontalVelocity = _velocity.GetX();
+		_velocity.SetX(currentHorizontalVelocity * -1);
 	}
 }

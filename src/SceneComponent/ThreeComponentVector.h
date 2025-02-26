@@ -18,9 +18,9 @@ namespace SceneComponent
             void SetX(float xValue);
             void SetY(float yValue);
 
-            float GetX();
-            float GetY();
-            float GetZ();
+            float GetX() const;
+            float GetY() const;
+            float GetZ() const;
     };
 }
 

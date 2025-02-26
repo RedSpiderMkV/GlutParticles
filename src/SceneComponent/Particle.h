@@ -15,10 +15,10 @@ namespace SceneComponent
             Particle();
             Particle(ThreeComponentVector position, ThreeComponentVector velocity);
             
-            ThreeComponentVector& GetPosition();
+            ThreeComponentVector GetPosition() const;   // basically a get without the ability to modify
             void SetPosition(ThreeComponentVector position);
 
-			ThreeComponentVector& GetVelocity();
+			ThreeComponentVector GetVelocity() const;
 			void SetVelocity(ThreeComponentVector velocity);
 
             void InvertVerticalVelocity();

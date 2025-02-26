@@ -4,40 +4,40 @@ namespace SceneComponent
 {	
     ThreeComponentVector::ThreeComponentVector(float vectorX, float vectorY, float vectorZ)
     {
-        this->_vectorX = vectorX;
-        this->_vectorY = vectorY;
-        this->_vectorZ = vectorZ;
+        _vectorX = vectorX;
+        _vectorY = vectorY;
+        _vectorZ = vectorZ;
     }
     
     void ThreeComponentVector::Add(ThreeComponentVector additionalVector)
     {
-		this->_vectorX += additionalVector.GetX();
-        this->_vectorY += additionalVector.GetY();
-        this->_vectorZ += additionalVector.GetZ();
+		_vectorX += additionalVector.GetX();
+        _vectorY += additionalVector.GetY();
+        _vectorZ += additionalVector.GetZ();
 	}
     
-    float ThreeComponentVector::GetX()
+    float ThreeComponentVector::GetX() const
     {
-		return this->_vectorX;
+		return _vectorX;
 	}
 	
-	float ThreeComponentVector::GetY()
+	float ThreeComponentVector::GetY() const
     {
-		return this->_vectorY;
+		return _vectorY;
 	}
     
-    float ThreeComponentVector::GetZ()
+    float ThreeComponentVector::GetZ() const
     {
-		return this->_vectorZ;
+		return _vectorZ;
 	}
 
     void ThreeComponentVector::SetX(float xValue)
     {
-        this->_vectorX = xValue;
+        _vectorX = xValue;
     }
 
     void ThreeComponentVector::SetY(float yValue)
     {
-        this->_vectorY = yValue;
+        _vectorY = yValue;
     }
 }
