@@ -7,15 +7,15 @@ using std::endl;
 
 namespace SceneComponent
 {
-	Particle::Particle()
+	Particle::Particle() : _position(0, 0, 0), _velocity(0, 0, 0)
 	{
-
+		
 	}
 	
     Particle::Particle(ThreeComponentVector position, ThreeComponentVector velocity)
+		: _position(position), _velocity(velocity)
     {
-		this->_velocity = velocity;
-        this->_position = position;
+		
     }
     
     ThreeComponentVector& Particle::GetPosition()

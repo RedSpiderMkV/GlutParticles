@@ -11,7 +11,6 @@ namespace SceneComponent
             float _vectorY;
             float _vectorZ;
         public:
-			ThreeComponentVector();
             ThreeComponentVector(float vectorX, float vectorY, float vectorZ);
 
             void Add(ThreeComponentVector additionalVector);

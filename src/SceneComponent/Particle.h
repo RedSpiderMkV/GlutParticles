@@ -12,7 +12,7 @@ namespace SceneComponent
             ThreeComponentVector _position;
 			ThreeComponentVector _velocity;
         public:
-			Particle();
+            Particle();
             Particle(ThreeComponentVector position, ThreeComponentVector velocity);
             
             ThreeComponentVector& GetPosition();

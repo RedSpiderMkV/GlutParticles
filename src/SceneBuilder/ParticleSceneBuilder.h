@@ -1,4 +1,3 @@
-
 #ifndef SCENEBUILDER_H
 #define SCENEBUILDER_H
 

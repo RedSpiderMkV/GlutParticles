@@ -1,14 +1,7 @@
 #include "ThreeComponentVector.h"
 
 namespace SceneComponent
-{
-	ThreeComponentVector::ThreeComponentVector()
-	{
-		this->_vectorX = 0;
-        this->_vectorY = 0;
-        this->_vectorZ = 0;
-	}
-	
+{	
     ThreeComponentVector::ThreeComponentVector(float vectorX, float vectorY, float vectorZ)
     {
         this->_vectorX = vectorX;
